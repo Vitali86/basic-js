@@ -21,6 +21,7 @@ function getSeason(date) {
   }
   try {
     date.getYear();
+    // date.getTime()
   } catch {
     throw Error('Invalid date!');
   }
