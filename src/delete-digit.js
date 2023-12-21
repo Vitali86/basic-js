@@ -30,4 +30,3 @@ function deleteDigit(n) {
 module.exports = {
   deleteDigit
 };
-deleteDigit(1001);
