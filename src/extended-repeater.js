@@ -17,14 +17,9 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function repeater(str, options) {
   let newString = [];
-  let repeatTimes = 1;
-  if (options.repeatTimes) {
-    repeatTimes = options.repeatTimes;
-  }
-  let separator = '+';
-  if (options.separator) {
-    separator = options.separator;
-  }
+  options.repeatTimes = options.repeatTimes || 1;
+  options.separator = options.separator || '+';
+  
   let addition = '';
   if (typeof options.addition === 'boolean' || options.addition === null) {
     addition = String(options.addition);
@@ -40,13 +35,13 @@ function repeater(str, options) {
     additionSeparator = options.additionSeparator;
   }
 
-  for (let i = 0; i < repeatTimes; i++) {
+  for (let i = 0; i < options.repeatTimes; i++) {
     newString.push(String(str));
     for (let j = 0; j < additionRepeatTimes; j++) {
       newString.push(String(addition));
       if (!(j === additionRepeatTimes - 1)) newString.push(additionSeparator);
     }
-    if (!(i === repeatTimes - 1)) newString.push(separator);
+    if (!(i === options.repeatTimes - 1)) newString.push(options.separator);
   }
   return newString.join('');
 
